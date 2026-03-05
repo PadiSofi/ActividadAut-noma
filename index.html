@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALQUIPC - Facturación</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>ALQUIPC</h1>
+      <h2>Sistema de Facturación</h2>
+
+      <form
+        id="facturaForm"
+        onsubmit="
+          event.preventDefault();
+          calcularFactura();
+        "
+      >
+        <div class="form-group">
+          <label for="nombreCliente">Nombre Cliente:</label>
+          <input
+            type="text"
+            id="nombreCliente"
+            placeholder="Ej: Juan Pérez"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="idCliente">ID Cliente:</label>
+          <input
+            type="text"
+            id="idCliente"
+            placeholder="Ej: CLI-001"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="telefonoCliente">Teléfono Cliente:</label>
+          <input
+            type="tel"
+            id="telefonoCliente"
+            placeholder="Ej: 555-1234"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="emailCliente">Email Cliente:</label>
+          <input
+            type="email"
+            id="emailCliente"
+            placeholder="Ej: juan@correo.com"
+            required
+          />
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0" />
+
+        <div class="form-group">
+          <label for="equipos">Número de equipos (mínimo 2):</label>
+          <input type="number" id="equipos" min="2" required />
+        </div>
+
+        <div class="form-group">
+          <label for="diasIniciales">Días iniciales de alquiler:</label>
+          <input type="number" id="diasIniciales" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="diasAdicionales">Días adicionales:</label>
+          <input type="number" id="diasAdicionales" min="0" value="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo de alquiler:</label>
+          <select id="tipo" required>
+            <option value="ciudad">Dentro de la ciudad</option>
+            <option value="fuera">Fuera de la ciudad (+5%)</option>
+            <option value="local">Dentro del establecimiento (-5%)</option>
+          </select>
+        </div>
+
+        <button type="submit">Calcular factura</button>
+      </form>
+
+      <div id="resultado" class="resultado"></div>
+    </div>
+
+    <!-- Modal para mostrar la factura -->
+    <div id="modalFactura" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="js/script.JS"></script>
+  </body>
+</html>
